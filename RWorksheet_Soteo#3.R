@@ -66,7 +66,7 @@ lowercase_letters
   row_4
       City Temperature
       4 Tacloban          34
-      
+      #
   #G
   max_temp_index <- which.max(city_temp_df$Temperature)
   min_temp_index <- which.min(city_temp_df$Temperature)  
