@@ -62,8 +62,7 @@ meanHeight
 #68.57143
 
 #d. Relationship between shoesize and height.
-#Yes, there is a relationship between shoesize and height. The taller
-#you are, the bigger your shoe size.
+#Yes, there is a relationship between shoesize and height. The taller you are, the bigger your shoe size.
 
 #2
 #Factor
@@ -96,9 +95,51 @@ summary(factor_months_Vector)
 
 #4.
 
-vector_data <- rep(c("East", "West", "North"), times = c(1,4,3))
-factor_data <- factor(vector_data, levels = c("East", "West", "North"))
-factor_data
+factor_data <- c("East", "West", "North")
+frequency <- c(1,4,3)
+new_order_data <- factor(factor_data, levels = c("East", "West", "North"))
+new_order_data
 
 #5
+data_f <- read.table(file = "import_march.csv", header = TRUE, sep = ',')
+data_f
 
+#6
+user_input <- readline(prompt = "Enter a number between 1 to 50: ")
+if (user_input == 20){
+  print("TRUE")
+}else if (user_input <1 &&user_input >50){
+  print("The number you provided exceeds the range of 1-50.")
+}else{
+  paste(user_input)
+}
+
+#7
+
+
+#8
+#a.Data Frame
+math_df <- data.frame(
+  Name = c("Annie", "Thea", "Steve", "Hanna"),
+  Grade1 = c(85, 65, 75, 95),
+  Grade2 = c(65, 75, 55, 75),
+  Grade3 = c(85, 90, 80, 100),
+  Grade4 = c(100, 90, 85, 90)
+)
+math_df
+#Name Grade1 Grade2 Grade3 Grade4
+#1 Annie     85     65     85    100
+#2  Thea     65     75     90     90
+#3 Steve     75     55     80     85
+#4 Hanna     95     75    100     90
+
+#b. Average
+library(dplyr)
+
+math_df_ave <- math_df %>% mutate(Average = (Grade1 + Grade2 + Grade3 + Grade4) / 4)
+print(math_df_ave)
+
+high_achievers <- math_df_ave %>% filter(Average > 90)
+high_achievers_avg_score <- mean(high_achievers$Average)
+print(high_achievers_avg_score)
+#c.
