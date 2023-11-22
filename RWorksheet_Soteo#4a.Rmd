@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 #Worksheet 4
 ```{r}
 #1.
@@ -185,5 +190,41 @@ cat(display, sep = "\n")
 ```
 ```{r}
 #c.
+test1_average <- sum(mathscore$Grade1)/nrow(mathscore)
+test2_average <- sum(mathscore$Grade2)/nrow(mathscore)
+test3_average <- sum(mathscore$Grade3)/nrow(mathscore)
+test4_average <- sum(mathscore$Grade4)/nrow(mathscore)
 
+if (test1_average < 80) {
+  cat("The 1st test was difficult.\n")
+}
+if (test2_average < 80) {
+  cat("The 2nd test was difficult.\n")
+}
+if (test3_average < 80) {
+  cat("The 3rd test was difficult.\n")
+}
+if (test4_average < 80) {
+  cat("The 4th test was difficult.\n")
+}
+```
 
+```{r}
+#d.
+for (i in 1:nrow(mathscore)){
+  highest_grade <- mathscore$Grade1[i]
+  if (mathscore$Grade2[i] > highest_grade){
+    highest_grade <- mathscore$Grade2[i]
+  }
+  if (mathscore$Grade3[i] > highest_grade){
+    highest_grade <- mathscore$Grade3[i]
+  }
+  if (mathscore$Grade4[i] > highest_grade){
+    highest_grade <- mathscore$Grade4[i]
+  }
+  if (highest_grade > 90){
+    cat(mathscore$Name[i], "'s highest grade this semester is", 
+        highest_grade, "\n")
+  }
+}
+```
